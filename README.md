@@ -18,6 +18,9 @@ Throughout the process of setting up my Nextcloud instances with Docker and Ngin
 ## 3.	Container Identification Issues:
 -	Errors like "No such container" were encountered when I tried to interact with containers that were either not running or incorrectly referenced in my commands.
 -	To address the "No such container" errors, I ensured that my Docker containers were up and running using docker-compose up and verified their status with docker ps. I corrected  wrong references in my commands or scripts.
+
+   ```docker ps```
+   
 ## 4.	Database Connection Issues:
 -	I experienced database connection errors, particularly "Failed to connect to the database" and "Temporary failure in name resolution," indicating issues with the database container's network configuration or the Nextcloud application's database access settings. While I was writing docker compose file I decided to use mysql 5.7 and successfully run nextcloud on localhost but when I was checking Security & setup warnings I noticed that I should use mysql 8.0 or mariadb so I changed it but then I started to get errors.
 -	After getting lots of errors I uninstalled docker-compose and install it again and start the project from scratch to solve the issues.
