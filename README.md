@@ -18,7 +18,7 @@
 -	Load Testing: Locust was used to simulate user behavior and test the scalability and performance of my Nextcloud deployment. I defined user tasks in a Python script to mimic file download operations from Nextcloud.
 -	Testing Strategy: I configured Locust to generate a specified number of virtual users to perform downloads of special size files i created, testing the system's response to concurrent user actions and monitoring performance metrics like request failure rates and response times.
 
-  ```dd if=/dev/zero of=10kB_file.txt bs=1024 count=10```
+  ```dd if=/dev/zero of=10kB_file.txt bs=1024 count=10```/d
   ```dd if=/dev/urandom of=1MB_file.txt bs=1M count=1```
   ```dd if=/dev/urandom of=1GB_file.txt bs=1M count=1024```
 
