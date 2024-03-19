@@ -17,7 +17,7 @@ Throughout the process of setting up my Nextcloud instances with Docker and Ngin
 -	I resolved the Nginx configuration issues by editing the nginx.conf file to correct syntax errors and ensure proper upstream configuration for load balancing. I also made sure that Nginx was not attempting to bind to a port already in use, typically by changing or ensuring the port was available. I changed the ports to 8081 and 8082 to access my nextcloud instances.
 ## 3.	Container Identification Issues:
 -	Errors like "No such container" were encountered when I tried to interact with containers that were either not running or incorrectly referenced in my commands.
--	To address the "No such container" errors, I ensured that my Docker containers were up and running using docker-compose up and verified their status with docker ps. I corrected  wrong references in my commands or scripts.
+-	To address the "No such container" errors, I ensured that my Docker containers were up and running using docker-compose up and verified their status with docker ps. I corrected  wrong references in my commands.
 
    ```docker ps```
    
