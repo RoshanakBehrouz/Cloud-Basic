@@ -12,10 +12,10 @@
 ### Nginx:
 -	Reverse Proxy: Nginx was set up as a reverse proxy to distribute incoming user requests efficiently across the two Nextcloud instances, enabling load balancing and providing better resource utilization and fault tolerance.
 -	Configuration: I created a Nginx configuration file specifying the upstream servers (Nextcloud instances I have only 2 instances) and the routing logic. Nginx listened on port 80 and proxied the requests to the appropriate Nextcloud instance based on the defined load-balancing strategy. I used 8081,8082 for nextcloud instance1 and 2 respectively.
-Locust for Load Testing:
+### Locust for Load Testing:
 -	Load Testing: Locust was used to simulate user behavior and test the scalability and performance of my Nextcloud deployment. I defined user tasks in a Python script to mimic file download operations from Nextcloud.
 -	Testing Strategy: I configured Locust to generate a specified number of virtual users to perform downloads of a 10KB file, testing the system's response to concurrent user actions and monitoring performance metrics like request failure rates and response times.
-User Creation and Credential Management:
+### User Creation and Credential Management:
 -	User Generation Script: I created a Bash script to automate the creation of 30 Nextcloud users. This script utilized Docker's exec command to interact with the Nextcloud instance and add users programmatically.
 -	Credential Storage: After generating the users, I stored their credentials (username and password pairs) in a text file located at ~/nextcloud/credentials.txt. This file acted as a centralized repository for all generated user credentials.
 -	Credential Usage in Locust: In my Locust script, I implemented logic to read these credentials from the text file. Each simulated user in my Locust tests was assigned a unique set of credentials from this file, allowing for more realistic and varied simulation scenarios.
