@@ -4,6 +4,35 @@
 | ------------- | ------------- | ------- |
 | Roshanak Behrouz  | SM3800030 |  DSAI  |
 
+## Deployment:
+
+### Docker and Docker Compose:
+-	Docker: I used Docker to containerize individual components of my file storage system. This approach isolated dependencies and ensured consistent environments across different stages of development and deployment.
+-	Docker Compose: With Docker Compose, I defined and ran multi-container Docker applications. I created a docker-compose.yml file to configure my application’s services, networks, and volumes, which included the Nextcloud instances, database servers, and the Nginx reverse proxy.
+### Nginx:
+-	Reverse Proxy: Nginx was set up as a reverse proxy to distribute incoming user requests efficiently across the two Nextcloud instances, enabling load balancing and providing better resource utilization and fault tolerance.
+-	Configuration: I created a Nginx configuration file specifying the upstream servers (Nextcloud instances I have only 2 instances) and the routing logic. Nginx listened on port 80 and proxied the requests to the appropriate Nextcloud instance based on the defined load-balancing strategy. I used 8081,8082 for nextcloud instance1 and 2 respectively.
+Locust for Load Testing:
+-	Load Testing: Locust was used to simulate user behavior and test the scalability and performance of my Nextcloud deployment. I defined user tasks in a Python script to mimic file download operations from Nextcloud.
+-	Testing Strategy: I configured Locust to generate a specified number of virtual users to perform downloads of a 10KB file, testing the system's response to concurrent user actions and monitoring performance metrics like request failure rates and response times.
+User Creation and Credential Management:
+-	User Generation Script: I created a Bash script to automate the creation of 30 Nextcloud users. This script utilized Docker's exec command to interact with the Nextcloud instance and add users programmatically.
+-	Credential Storage: After generating the users, I stored their credentials (username and password pairs) in a text file located at ~/nextcloud/credentials.txt. This file acted as a centralized repository for all generated user credentials.
+-	Credential Usage in Locust: In my Locust script, I implemented logic to read these credentials from the text file. Each simulated user in my Locust tests was assigned a unique set of credentials from this file, allowing for more realistic and varied simulation scenarios.
+
+### Deployment Steps Overview:
+1. Compose File Development: Crafted a docker-compose.yml file to orchestrate the services, networks, and volumes configuration for the Nextcloud environments, databases, and the Nginx proxy.
+2. Nginx Setup: Configured Nginx to serve as a load balancer, distributing incoming requests across two Nextcloud instances to ensure effective load handling and resource utilization.
+3. User Account Creation: Utilized a Bash script to automate the creation of 30 distinct Nextcloud user accounts, storing their credentials in a centralized text file for accessibility and future test simulations.
+4. Test File Preparation: Created various-sized test files (10KB, 1MB, and 1GB) and uploaded them to an admin account within Nextcloud. These files served as the target resources for download operations during load testing.
+5. File Sharing Configuration: Configured the admin account to share the created test files with all user accounts, ensuring each simulated user could access them during the testing phase.
+6. Locust Test Script Setup: Configured Locust to dynamically read user credentials from the generated text file, simulating distinct login and file download actions for each user, focusing on the shared files for download tasks.
+7. System Launch: Initiated the orchestrated services using docker-compose up, integrating the Nextcloud instances, databases, and Nginx into a cohesive operational framework.
+8. Load Testing Execution: Deployed the Locust script to conduct comprehensive load testing, simulating concurrent user interactions to validate system performance and resource scaling under varied load conditions.
+9. Performance Monitoring and Analysis: Monitored critical metrics throughout the load testing process, evaluating the system's responsiveness, throughput, and overall stability to ensure the infrastructure's readiness for scaled deployment and usage.
+
+
+
 # challenges I faced and  manage to solve them:
 Throughout the process of setting up my Nextcloud instances with Docker and Nginx for load balancing, I encountered various errors and challenges. Here's a summary:
 ## 1.	Docker Daemon Access Issues:
