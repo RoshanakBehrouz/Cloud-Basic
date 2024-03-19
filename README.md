@@ -11,16 +11,16 @@
 -	Docker Compose: With Docker Compose, I defined and ran multi-container Docker applications. I created a docker-compose.yml file to configure my application’s services, networks, and volumes, which included the Nextcloud instances, database servers, and the Nginx reverse proxy.
 -	I made a directory named nextcloud and saved my dockercompose file and other necessary files there.
 
-```sudo apt update```
-```sudo apt install docker-ce docker-ce-cli containerd.io```
-```sudo systemctl status docker```
-```docker --version```
-```sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose```
-```sudo chmod +x /usr/local/bin/docker-compose```
-```docker-compose --version```
-```mkdir nextcloud && cd nextcloud```
-```nano docker-compose.yml```
-```sudo docker-compose up -d```
+* ```sudo apt update```
+* ```sudo apt install docker-ce docker-ce-cli containerd.io```
+* ```sudo systemctl status docker```
+* ```docker --version```
+* ```sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose```
+* ```sudo chmod +x /usr/local/bin/docker-compose```
+* ```docker-compose --version```
+* ```mkdir nextcloud && cd nextcloud```
+* ```nano docker-compose.yml```
+* ```sudo docker-compose up -d```
 
 ### Nginx:
 -	Reverse Proxy: Nginx was set up as a reverse proxy to distribute incoming user requests efficiently across the two Nextcloud instances, enabling load balancing and providing better resource utilization and fault tolerance.
