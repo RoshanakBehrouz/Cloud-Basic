@@ -1,7 +1,7 @@
 # Cloud-Basic Final Project
 Cloud-Based File Storage System
 
-| Name | student ID |Program|
+| Name | Student ID |Program|
 | ------------- | ------------- | ------- |
 | Roshanak Behrouz  | SM3800030 |  DSAI  |
 
