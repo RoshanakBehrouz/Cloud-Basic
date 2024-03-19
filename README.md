@@ -1,7 +1,7 @@
 # Cloud-Basic
 Cloud-Based File Storage System
-Web form registration flow
-User enters their email address
+Name 	Surname 	Student ID 	email 	Master
+Roshanak 	Behrouz 	SM3800030 	roshanakbehrouz@ds.units.it 	DSAI
 
 
 Verification link is sent to the email address
