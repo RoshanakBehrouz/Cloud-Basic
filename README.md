@@ -25,7 +25,7 @@
 
 ### User Creation and Credential Management:
 -	User Generation Script: I created a Bash script to automate the creation of 30 Nextcloud users. This script utilized Docker's exec command to interact with the Nextcloud instance and add users programmatically.
--  ```nano create_users.sh```
+- ```nano create_users.sh```
 - ```	chmod +x create_users.sh```
 - ```./create_users.sh```
 
