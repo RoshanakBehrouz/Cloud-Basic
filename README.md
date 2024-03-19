@@ -28,6 +28,9 @@ Throughout the process of setting up my Nextcloud instances with Docker and Ngin
 ## 5.	Storage Issues:
 -	I experienced storage issues while I try to run docker compose up after making changes to the docker-compose.
 -	When I faced challenges related to storage from previous unsuccessful attempts , using docker system prune helped by cleaning up the environment. This action could have resolved issues like: Running out of disk space due to accumulated unused Docker images and containers.
+
+  ```docker system prune```
+  
 ## 6.	Locust Testing Challenges:
 -	During load testing with Locust, I encountered script errors related to user credential unpacking and incorrect file path references. Additionally, there were performance issues with a high failure rate for file downloads.
 -	I addressed the script errors in Locust by correcting the user credentials file format and ensuring it was properly parsed. I also fixed file path references to ensure the Locust tasks could accurately request the target files. At first I get errors on unsuccessful login attemps as I didn’t made users to test. Then I write a bash file to create users then remmeber that in order to be able to download a file from nextcloud first I nedd to upload some file there. I uploaded the files I created with bash in admin account and then I gave permission of access to users and fixed the problem.( First I test only with one user and I get failures all the time, then I understand that I need to make users)
