@@ -1,5 +1,4 @@
 # Cloud-Basic Final Project
-Cloud-Based File Storage System
 
 | Name | Student ID |Program|
 | ------------- | ------------- | ------- |
