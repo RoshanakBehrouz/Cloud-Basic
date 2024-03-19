@@ -1,8 +1,9 @@
 # Cloud-Basic
 Cloud-Based File Storage System
-Name 	Surname 	Student ID 	email 	Master
-Roshanak 	Behrouz 	SM3800030 	roshanakbehrouz@ds.units.it 	DSAI
 
+| Name | student ID |Program|
+| ------------- | ------------- | ------------- |
+| Roshanak Behrouz  | SM3800030  |     DSAI  |
 
 Verification link is sent to the email address
 User clicks on the verification link
