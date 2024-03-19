@@ -25,6 +25,10 @@
 
 ### User Creation and Credential Management:
 -	User Generation Script: I created a Bash script to automate the creation of 30 Nextcloud users. This script utilized Docker's exec command to interact with the Nextcloud instance and add users programmatically.
+-  ```nano create_users.sh```
+- ```	chmod +x create_users.sh```
+- ```./create_users.sh```
+
 -	Credential Storage: After generating the users, I stored their credentials (username and password pairs) in a text file located at ~/nextcloud/credentials.txt. This file acted as a centralized repository for all generated user credentials.
 -	Credential Usage in Locust: In my Locust script, I implemented logic to read these credentials from the text file. Each simulated user in my Locust tests was assigned a unique set of credentials from this file, allowing for more realistic and varied simulation scenarios.
 
