@@ -5,6 +5,8 @@
 | Roshanak Behrouz  | SM3800030 |  DSAI  |
 
 ## Deployment:
+### Reason of choices:
+- Nextcloud is a collaboration platform focused on file sharing, synchronization, and productivity, while MinIO is an object storage server optimized for scalable storage of unstructured data. Locust is Python based, open source, developer friendly and easy to use. Nginx is Low resource usage, active community users in case of trouble shooting.
 
 ### Docker and Docker Compose:
 -	Docker: I used Docker to containerize individual components of my file storage system. This approach isolated dependencies and ensured consistent environments across different stages of development and deployment.
