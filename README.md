@@ -3,7 +3,7 @@ Cloud-Based File Storage System
 
 | Name | student ID |Program|
 | ------------- | ------------- | ------- |
-| Roshanak Behrouz  | SM3800030  |  DSAI  |
+| Roshanak Behrouz  | SM3800030 |  DSAI  |
 
 Verification link is sent to the email address
 User clicks on the verification link
