@@ -3,3 +3,99 @@ Roshanak Behrouz
 Data science and Artificial Intelligence
 Cloud basics (3 credits)
 
+Introduction
+This report outlines the deployment and testing of a cloud-based file storage system using Nextcloud, a popular open-source solution. The system is designed to manage user authentication and authorization, handle file operations, ensure scalability and security, and optimize cost-efficiency.
+System Requirements and Implementation
+1. User Authentication and Authorization:
+    • Sign Up, Log In, and Log Out: Users can easily create an account, access their private space after logging in, and securely log out.
+    • User Roles: Two primary roles were defined - regular users and admins. Regular users have access to their files and cannot view or edit other users' data. Admins can manage user accounts and access control.
+    • Private Storage Space: Each regular user is allocated a private storage space where they can securely store their files.
+2. File Operations:
+    • Uploading Files: Users can upload files to their designated private storage space through an intuitive interface.
+    • Downloading Files: Users can download their stored files at any time, provided they have adequate permissions and authentication.
+    • Deleting Files: Users can manage their storage by deleting files, with changes immediately reflecting in their available storage quota.
+3. Scalability:
+    • The system architecture was designed to be horizontally scalable, allowing the addition of more server resources to handle an increasing number of users and data.
+    • Load balancing was implemented using Nginx to distribute traffic evenly across multiple Nextcloud instances, ensuring optimal resource utilization and user experience.
+      
+4. Security:
+    • Secure File Storage and Transmission: Data encryption was employed both at rest and during transmission, ensuring that files are securely stored and accessed.
+    • User Authentication Security: Robust authentication mechanisms, including strong password policies and possible two-factor authentication, were recommended to enhance security.
+    • Access Control: Measures were put in place to prevent unauthorized access, including strict permissions and access controls at both the file and directory levels.
+    • Monitoring: Regular monitoring of container and system health to ensure optimal operation, employing Docker's native monitoring tools or third-party solutions for comprehensive insights.
+    • System Updates: Scheduled updates and backups are critical for maintaining system security and data integrity, ensuring the platform remains resilient against emerging threats and data loss scenarios.
+5. Cost-Efficiency:
+    • The deployment utilized open-source technologies, significantly reducing software licensing costs.
+    • Recommendations for future deployments include choosing cost-effective cloud storage and compute resources, leveraging reserved instances, and implementing auto-scaling to optimize resource utilization and costs.
+6. Deployment:
+    • The deployment was conducted in a containerized environment using Docker and Docker Compose, facilitating ease of deployment, scaling, and version control.
+    • Regular monitoring and management of the system were proposed, using tools like Portainer or similar for container management and Prometheus or Grafana for monitoring metrics.
+    • The deployment, executed on a laptop environment, encapsulated the following phases:
+    • Containerization: Nextcloud and its database services were encapsulated within Docker containers, facilitating isolation, ease of deployment, and scalability.
+    • Configuration: Following containerization, the services were configured to communicate effectively, establishing a functional and coherent system environment.
+    • 
+7. Cloud Provider Choice:
+    • For a production deployment, a cloud provider like AWS was recommended AWS (Amazon Web Services) is recommended for deploying the cloud-based file storage system for several reasons:
+    • Scalability: AWS provides a highly scalable environment that can automatically adjust according to the application's demands. This is crucial for a file storage system as the number of users and the amount of data can grow significantly. Services like Amazon EC2 allow I to scale up or down easily based on demand.
+    • Reliability and Availability: AWS offers a robust infrastructure with a network of data centers located across various geographical regions and Availability Zones. This ensures high availability and reliability of the services, minimizing the risk of downtime which is essential for any storage solution.
+    • Security: AWS provides comprehensive security features that adhere to industry standards, including data encryption at rest and in transit, network firewalls, identity access management, and detailed auditing capabilities. These features can help secure sensitive data and ensure compliance with various regulatory requirements.
+    • Cost-Effectiveness: AWS offers a pay-as-I-go model that allows I to pay only for the resources I use. This can significantly reduce the costs compared to maintaining an on-premise infrastructure. Additionally, AWS offers various pricing models and services that can help optimize costs based on my specific usage patterns.
+    • Wide Range of Services: AWS offers an extensive range of services that can be integrated with my file storage system, including compute, networking, database, analytics, and machine learning services. This can enhance the functionality of my system and provide opportunities for innovation and improvement.
+    • Ecosystem and Support: AWS has a large ecosystem of partners, developers, and third-party tools that can extend the capabilities of my file storage system. Additionally, AWS provides various support plans and resources to help I with deployment, management, and troubleshooting.
+    • Experience and Market Leadership: AWS is a market leader in the cloud computing space and has extensive experience hosting and managing large-scale cloud applications. By choosing AWS, we can leverage their expertise and best practices to ensure the success of my deployment.
+Overall, AWS's scalability, reliability, security features, cost-effectiveness, and comprehensive service offerings make it a suitable choice for deploying a cloud-based file storage system like Nextcloud.
+      
+8. Testing Infrastructure:
+    • Load testing was performed using Locust to simulate multiple users interacting with the system, providing insights into the system's handling of various operations under stress.
+    • The test highlighted the system's robustness in managing concurrent file downloads and uploads, showcasing its readiness for real-world usage.
+A basic tool is the Usage Survey report of Nextlcoud. First of all, I would regularly keep track of the users, the data storage and the activities. It is important to note that, if I are on the cloud, because of the pay-as-I-go policy, the more resources I allocate, the larger the bill! A way to manage the system could be setting a maximum storage space for every user, and creating various groups of users like base-premium to differentiate the storage space availability. I would also execute regular tests on the performace of my system to make the right adjustements where needed.
+Conclusion
+The deployed Nextcloud system meets the project's requirements, offering a scalable, secure, and cost-effective solution for cloud-based file storage. Future steps include continuous monitoring, regular security assessments, and scalability testing to ensure the system adapts to growing user numbers and data volumes.
+Deployment:
+In first step I download docker on Ubunto OS, then install docker compose then make the directory I need:
+save commands in docker-compose.yml and run sudo docker-compose up to make it happen. Then I manage to have access to nextcloud from local host at first I use port 80 to connect to nextcloud.(i changed it in next steps).
+The deployment utilizes Nextcloud's robust user management system, supporting essential functionalities such as user sign-up (In order to  activate sign up, I download and install registration from apps), log-in, and log-out processes. Users have different roles: regular users and administrators. In order to define roles a group named Users added and new users defined in this role and any one signing up is set to be in this group.
+          We used Docker Compose to define and run multiple Docker containers for my Nextcloud and database instances. I edited docker compose file to address my needs to set up a Nginx load balancer. In order to setup a oad balancer I need two or more instances of nextcloud. I created one more instance of nextcloud to do the load balancing. Then I need to define Database configuration.Two MySQL database instances were defined in the Docker Compose file (db1 and db2) to provide separate databases for each Nextcloud instance. Environment variables like root password, database name, user, and user password were configured for each database service.Two Nextcloud instances (app1 and app2) were configured, each connected to its respective database. Environment variables were set up to ensure each Nextcloud instance connects to the correct database. Unique ports were exposed for each Nextcloud instance for direct access and testing (e.g., 8081 and 8082).An NGINX service was defined in the docker-compose.yml file to act as a load balancer. The NGINX configuration file (nginx.conf) was customized to distribute incoming requests between the two Nextcloud instances using the upstream directive. The load balancer was configured to listen on a common port (e.g., 80) and proxy requests to the two Nextcloud instances. NGINX was set to depend on the Nextcloud instances to ensure it starts after they are up and running.We used docker-compose up to start all the services defined in the Docker Compose file. This command initializes the databases, Nextcloud instances, and the NGINX load balancer.After the services were up, we accessed the Nextcloud instances directly via their exposed ports (8081 and 8082) to verify their functionality. The NGINX load balancer was accessed using the host's IP address or domain name (without specifying a port), which then distributed the traffic between the two Nextcloud instances. During the setup, we encountered and resolved various issues, such as database connectivity errors, port conflicts, ensuring each component functioned as expected.
+
+Locust is an open-source load testing tool that allows us to simulate millions of simultaneous users to test the performance and scalability of our web applications. In order to see how my system behaves under heavy load, which is crucial for ensuring that my cloud-based file storage system can handle the expected user traffic without performance degradation I used Locust. First I defined 30 users with bash and saved them into a file.
+For testing how system handle increased load on small files( in KB),large files( in GB) and average file (in MB) first I create files of needed size:
+
+with help of administrators account I share these files among users to test downloads with Locust.
+in order to test in locust I think of adding tags to different file types and run with an appropriate command
+But I only implement it for smallfile.txt and make changes when I need to test different file size.
+
+Nextcloud comes with a set of secure defaults to address the security of the system. In order to implement secure file storage, if the user data is sensible, Nextcloud allows to enable file encryption on the server side. This will reduce the performance of the system but will prevent an intruder that gains access to the data to read it. When file encryption is enabled, all files can still be shared by a user using the Nextcloud interface but won't be sharable directly from the remote server. Note that enabling encryption also increases the amount of storage space required by each file. To enable encryption from the web interface simply login as admin, search for the Default Encryption module app and enable it. Then to enable file encryption:
+Administration Settings -> Administration Security -> Server-side encryption
+The system won't be secure unless our users have non trivial passwords. From the same configuration page we can harden the password policy by requiring numbers and symbols. We can also require the password to be changed periodically. To prevent unauthorized access and secure user authentication we can also enable 2 factor authentication. The clients and the server interact through HTTP protocol, enforcing HTTPS protocol is mandatory in production servers to prevent man in the middle attacks and data snooping. Here we do not have domain and w implement this on local host so we are not able to use HTTPS. First of all I would leverage the Nextcloud Security Scan -https://scan.nextcloud.com-to check for unknown vulnerabilities of my system. I would regularly look at the Activity and Logging sections of the admin page for any suspicious or unauthorized access patterns. I would also use the Suspicious Login tool provided by Nextcloud, but this needs to be trained with examples of bad logins. I could also set a small number of login attempts before the user account is blocked
+
+challenges I faced and solved:
+Throughout the process of setting up my Nextcloud instances with Docker and Nginx for load balancing, I encountered various errors and challenges. Here's a summary:
+    1. Docker Daemon Access Issues:
+        ◦ I encountered permission denied errors when attempting to execute Docker commands, indicating issues with accessing the Docker daemon. This is typically due to the current user not having the necessary permissions to interact with Docker.
+        ◦ To solve the permission denied errors when accessing Docker, I either prefixed my Docker commands with sudo to gain elevated permissions or added my user to the Docker group using the command sudo usermod -aG docker $USER, followed by logging out and back in for the changes to take effect.
+    2. Nginx Configuration Errors:
+        ◦ I faced issues with the Nginx configuration, including errors related to the upstream directive placement and binding Nginx to port 80 when the port was already in use. Additionally, there were configuration challenges related to setting up load balancing correctly.
+        ◦ I resolved the Nginx configuration issues by editing the nginx.conf file to correct syntax errors and ensure proper upstream configuration for load balancing. I also made sure that Nginx was not attempting to bind to a port already in use, typically by changing or ensuring the port was available. I changed the ports to 8081 and 8082 to access my nextcloud instances.
+    3. Container Identification Issues:
+        ◦ Errors like "No such container" were encountered when I tried to interact with containers that were either not running or incorrectly referenced in my commands.
+        ◦ To address the "No such container" errors, I ensured that my Docker containers were up and running using docker-compose up and verified their status with docker ps. I corrected  wrong references in my commands or scripts. 
+    4. Database Connection Issues:
+        ◦ I experienced database connection errors, particularly "Failed to connect to the database" and "Temporary failure in name resolution," indicating issues with the database container's network configuration or the Nextcloud application's database access settings. While I was writing docker compose file I decided to use mysql 5.7 and successfully run nextcloud on localhost but when I was checking Security & setup warnings I noticed that I should use mysql 8.0 or mariadb so I changed it but then I started to get errors.
+        ◦ After getting lots of errors I uninstalled docker-compose and install it again and start the project from scratch to solve the issues.
+          
+    5. Storage Issues:
+        ◦ I experienced storage issues while I try to run docker compose up after making changes to the docker-compose. 
+        ◦ When I faced challenges related to storage from previous unsuccessful attempts , using docker system prune helped by cleaning up the environment. This action could have resolved issues like: Running out of disk space due to accumulated unused Docker images and containers.
+    6. Locust Testing Challenges:
+        ◦ During load testing with Locust, I encountered script errors related to user credential unpacking and incorrect file path references. Additionally, there were performance issues with a high failure rate for file downloads.
+        ◦ I addressed the script errors in Locust by correcting the user credentials file format and ensuring it was properly parsed. I also fixed file path references to ensure the Locust tasks could accurately request the target files. At first I get errors on unsuccessful login attemps as I didn’t made users to test. Then I write a bash file to create users then remmeber that in order to be able to download a file from nextcloud first I nedd to upload some file there. I uploaded the files I created with bash in admin account and then I gave permission of access to users and fixed the problem.( First I test only with one user and I get failures all the time, then I understand that I need to make users)
+    7. File Operation Limitations:
+        ◦ When attempting to upload or share files among multiple users, I ran into limitations or were unsure how to achieve this with Nextcloud and my Locust testing setup.
+        ◦ I addressed the script errors in Locust by correcting the user credentials file format and ensuring it was properly parsed. I also fixed file path references to ensure the Locust tasks could accurately request the target files.
+    8. File Path and Access Issues in Scripts:
+        ◦ There were challenges with file paths and accessing specific files within the Nextcloud environment for testing purposes.
+        ◦ Finally I fixed it by uploading the file to admin account and share amonug users.
+    9. Deployment and Monitoring Complexities:
+        ◦ Throughout deployment and monitoring, I adjusted my docker-compose.yml to ensure proper service dependencies and network configurations. 
+
+By iteratively addressing each issue with targeted adjustments and verifications, I successfully resolved the challenges and progressed with my Nextcloud deployment and load testing.
