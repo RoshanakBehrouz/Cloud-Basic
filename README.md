@@ -4,7 +4,7 @@
 | ------------- | ------------- | ------- |
 | Roshanak Behrouz  | SM3800030 |  DSAI  |
 
-#challenges I faced and solved:
+# challenges I faced and solved:
 Throughout the process of setting up my Nextcloud instances with Docker and Nginx for load balancing, I encountered various errors and challenges. Here's a summary:
 1.	Docker Daemon Access Issues:
 •	I encountered permission denied errors when attempting to execute Docker commands, indicating issues with accessing the Docker daemon. This is typically due to the current user not having the necessary permissions to interact with Docker.
