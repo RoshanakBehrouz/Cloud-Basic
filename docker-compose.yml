@@ -1,0 +1,78 @@
+version: '3'
+
+services:
+  db1:
+    image: mariadb
+    container_name: nextcloud_mariadb1
+    volumes:
+      - db1:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=14070929
+      - MYSQL_DATABASE=nextcloud1
+      - MYSQL_USER=nextcloud1
+      - MYSQL_PASSWORD=14070929
+    networks:
+      - nextcloud_network
+
+  db2:
+    image: mariadb
+    container_name: nextcloud_mariadb2
+    volumes:
+      - db2:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=14070929
+      - MYSQL_DATABASE=nextcloud2
+      - MYSQL_USER=nextcloud2
+      - MYSQL_PASSWORD=14070929
+    networks:
+      - nextcloud_network
+
+  app1:
+    image: nextcloud
+    restart: always
+    environment:
+      - MYSQL_HOST=db1
+      - MYSQL_DATABASE=nextcloud1
+      - MYSQL_USER=nextcloud1
+      - MYSQL_PASSWORD=14070929
+    networks:
+      - nextcloud_network
+    depends_on:
+      - db1
+    ports:
+      - "8081:80"
+
+  app2:
+    image: nextcloud
+    restart: always
+    environment:
+      - MYSQL_HOST=db2
+      - MYSQL_DATABASE=nextcloud2
+      - MYSQL_USER=nextcloud2
+      - MYSQL_PASSWORD=14070929
+    networks:
+      - nextcloud_network
+    depends_on:
+      - db2
+    ports:
+      - "8082:80"
+
+  nginx:
+    image: nginx:latest
+    container_name: nextcloud_nginx
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf
+    ports:
+      - "80:80"
+    networks:
+      - nextcloud_network
+    depends_on:
+      - app1
+      - app2
+
+volumes:
+  db1:
+  db2:
+
+networks:
+  nextcloud_network:
