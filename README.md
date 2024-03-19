@@ -41,7 +41,5 @@ Throughout the process of setting up my Nextcloud instances with Docker and Ngin
 -	There were challenges with file paths and accessing specific files within the Nextcloud environment for testing purposes.
 -	Finally I fixed it by uploading the file to admin account and share amonug users.
 ## 9.	Deployment and Monitoring Complexities:
--	Throughout deployment and monitoring, I adjusted my docker-compose.yml to ensure proper service dependencies and network configurations.
-
-By iteratively addressing each issue with targeted adjustments and verifications, I successfully resolved the challenges and progressed with my Nextcloud deployment and load testing.
+-	Throughout deployment and monitoring, I adjusted my docker-compose.yml to ensure proper service dependencies and network configurations. By iteratively addressing each issue with targeted adjustments and verifications, I successfully resolved the challenges and progressed with my Nextcloud deployment and load testing.
 
