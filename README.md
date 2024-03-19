@@ -10,6 +10,18 @@
 -	Docker: I used Docker to containerize individual components of my file storage system. This approach isolated dependencies and ensured consistent environments across different stages of development and deployment.
 -	Docker Compose: With Docker Compose, I defined and ran multi-container Docker applications. I created a docker-compose.yml file to configure my application’s services, networks, and volumes, which included the Nextcloud instances, database servers, and the Nginx reverse proxy.
 -	I made a directory named nextcloud and saved my dockercompose file and other necessary files there.
+
+```sudo apt update```
+```sudo apt install docker-ce docker-ce-cli containerd.io```
+```sudo systemctl status docker```
+```docker --version```
+```sudo curl -L "https://github.com/docker/compose/releases/download/1.29.2/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose```
+```sudo chmod +x /usr/local/bin/docker-compose```
+```docker-compose --version```
+```mkdir nextcloud && cd nextcloud```
+```nano docker-compose.yml```
+```sudo docker-compose up -d```
+
 ### Nginx:
 -	Reverse Proxy: Nginx was set up as a reverse proxy to distribute incoming user requests efficiently across the two Nextcloud instances, enabling load balancing and providing better resource utilization and fault tolerance.
 -	Configuration: I created a Nginx configuration file specifying the upstream servers (Nextcloud instances I have only 2 instances) and the routing logic. Nginx listened on port 80 and proxied the requests to the appropriate Nextcloud instance based on the defined load-balancing strategy. I used 8081,8082 for nextcloud instance1 and 2 respectively.
