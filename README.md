@@ -1,4 +1,4 @@
-![image](https://github.com/RoshanakBehrouz/Cloud-Basic/assets/131586234/b5bf1e23-cc25-46ae-a197-47db65368feb)# Cloud-Basic Final Project
+
 
 | Name | Student ID |Program|
 | ------------- | ------------- | ------- |
@@ -18,9 +18,9 @@
 -	Load Testing: Locust was used to simulate user behavior and test the scalability and performance of my Nextcloud deployment. I defined user tasks in a Python script to mimic file download operations from Nextcloud.
 -	Testing Strategy: I configured Locust to generate a specified number of virtual users to perform downloads of special size files i created, testing the system's response to concurrent user actions and monitoring performance metrics like request failure rates and response times.
 
-  ```dd if=/dev/zero of=10kB_file.txt bs=1024 count=10```
-  ```dd if=/dev/urandom of=1MB_file.txt bs=1M count=1```
-  ```dd if=/dev/urandom of=1GB_file.txt bs=1M count=1024```
++  ```dd if=/dev/zero of=10kB_file.txt bs=1024 count=10```
++  ```dd if=/dev/urandom of=1MB_file.txt bs=1M count=1```
++  ```dd if=/dev/urandom of=1GB_file.txt bs=1M count=1024```
 
 
 ### User Creation and Credential Management:
