@@ -10,7 +10,7 @@ Throughout the process of setting up my Nextcloud instances with Docker and Ngin
 -	I encountered permission denied errors when attempting to execute Docker commands, indicating issues with accessing the Docker daemon. This is typically due to the current user not having the necessary permissions to interact with Docker.
 -	To solve the permission denied errors when accessing Docker, I either prefixed my Docker commands with sudo to gain elevated permissions or added my user to the Docker group using the command sudo usermod -aG docker $USER, followed by logging out and back in for the changes to take effect.
   
-  ```docker ps```
+  ```sudo usermod -aG docker $USER```
 
 ## 2.	Nginx Configuration Errors:
 -	I faced issues with the Nginx configuration, including errors related to the upstream directive placement and binding Nginx to port 80 when the port was already in use. Additionally, there were configuration challenges related to setting up load balancing correctly.
