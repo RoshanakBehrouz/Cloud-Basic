@@ -49,15 +49,15 @@
 -	I test if users can upload,download and delete files.
 
 ### Deployment Steps Overview:
-1. Compose File Development: Crafted a docker-compose.yml file to orchestrate the services, networks, and volumes configuration for the Nextcloud environments, databases, and the Nginx proxy.
-2. Nginx Setup: Configured Nginx to serve as a load balancer, distributing incoming requests across two Nextcloud instances to ensure effective load handling and resource utilization.
-3. User Account Creation: Utilized a Bash script to automate the creation of 30 distinct Nextcloud user accounts, storing their credentials in a centralized text file for accessibility and future test simulations.
-4. Test File Preparation: Created various-sized test files (10KB, 1MB, and 1GB) and uploaded them to an admin account within Nextcloud. These files served as the target resources for download operations during load testing.
-5. File Sharing Configuration: Configured the admin account to share the created test files with all user accounts, ensuring each simulated user could access them during the testing phase.
-6. Locust Test Script Setup: Configured Locust to dynamically read user credentials from the generated text file, simulating distinct login and file download actions for each user, focusing on the shared files for download tasks.
-7. System Launch: Initiated the orchestrated services using docker-compose up, integrating the Nextcloud instances, databases, and Nginx into a cohesive operational framework.
-8. Load Testing Execution: Deployed the Locust script to conduct comprehensive load testing, simulating concurrent user interactions to validate system performance and resource scaling under varied load conditions.
-9. Performance Monitoring and Analysis: Monitored critical metrics throughout the load testing process, evaluating the system's responsiveness, throughput, and overall stability to ensure the infrastructure's readiness for scaled deployment and usage.
+**1. Compose File Development:** Crafted a docker-compose.yml file to orchestrate the services, networks, and volumes configuration for the Nextcloud environments, databases, and the Nginx proxy.
+**2. Nginx Setup:** Configured Nginx to serve as a load balancer, distributing incoming requests across two Nextcloud instances to ensure effective load handling and resource utilization.
+**3. User Account Creation:** Utilized a Bash script to automate the creation of 30 distinct Nextcloud user accounts, storing their credentials in a centralized text file for accessibility and future test simulations.
+**4. Test File Preparation:** Created various-sized test files (10KB, 1MB, and 1GB) and uploaded them to an admin account within Nextcloud. These files served as the target resources for download operations during load testing.
+**5. File Sharing Configuration:** Configured the admin account to share the created test files with all user accounts, ensuring each simulated user could access them during the testing phase.
+**6. Locust Test Script Setup:** Configured Locust to dynamically read user credentials from the generated text file, simulating distinct login and file download actions for each user, focusing on the shared files for download tasks.
+**7. System Launch:** Initiated the orchestrated services using docker-compose up, integrating the Nextcloud instances, databases, and Nginx into a cohesive operational framework.
+**8. Load Testing Execution:** Deployed the Locust script to conduct comprehensive load testing, simulating concurrent user interactions to validate system performance and resource scaling under varied load conditions.
+**9. Performance Monitoring and Analysis:** Monitored critical metrics throughout the load testing process, evaluating the system's responsiveness, throughput, and overall stability to ensure the infrastructure's readiness for scaled deployment and usage.
 
 
 
