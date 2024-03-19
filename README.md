@@ -42,6 +42,11 @@
 
 -	Credential Storage: After generating the users, I stored their credentials (username and password pairs) in a text file located at ~/nextcloud/credentials.txt. This file acted as a centralized repository for all generated user credentials.
 -	Credential Usage in Locust: In my Locust script, I implemented logic to read these credentials from the text file. Each simulated user in my Locust tests was assigned a unique set of credentials from this file, allowing for more realistic and varied simulation scenarios.
+-	To address the requirements of the project I enabled registration of users from apps in nextcloud so that user can sign-up
+-	I create one role of Users for regular users and assign each user to defined role.
+-	i manage to dedicate every user private storage space.
+-	Admins have the ability to manage the users.
+-	I test if users can upload,download and delete files.
 
 ### Deployment Steps Overview:
 1. Compose File Development: Crafted a docker-compose.yml file to orchestrate the services, networks, and volumes configuration for the Nextcloud environments, databases, and the Nginx proxy.
