@@ -30,7 +30,7 @@
 -	I started docker-compose.yml with only one nextcloud instance to check if it works, then expanded to two next cloud instances.
 ### Locust for Load Testing:
 -	Load Testing: Locust was used to simulate user behavior and test the scalability and performance of my Nextcloud deployment. I defined user tasks in a Python script to mimic file download operations from Nextcloud.
--	Testing Strategy: I configured Locust to generate a specified number of virtual users to perform downloads of special size files i created, testing the system's response to concurrent user actions and monitoring performance metrics like request failure rates and response times.
+-	Testing Strategy: I configured Locust to generate a specified number of virtual users to perform downloads of special size files i created, testing the system's response to concurrent user actions and monitoring performance metrics like request failure rates and response times.(8089)
 
 +  ```dd if=/dev/zero of=10kB_file.txt bs=1024 count=10```
 +  ```dd if=/dev/urandom of=1MB_file.txt bs=1M count=1```
@@ -104,9 +104,5 @@ Throughout the process of setting up my Nextcloud instances with Docker and Ngin
 ## 7.	File Operation Limitations:
 -	When attempting to download files among multiple users, I ran into limitations or were unsure how to achieve this with Nextcloud and my Locust testing setup.
 -	I addressed the script errors in Locust by correcting the user credentials file format and ensuring it was properly parsed. I also fixed file path references to ensure the Locust tasks could accurately request the target files.
-## 8.	File Path and Access Issues in Scripts:
--	There were challenges with file paths and accessing specific files within the Nextcloud environment for testing purposes.
--	Finally I fixed it by uploading the file to admin account and share amonug users.
-## 9.	Deployment and Monitoring Complexities:
--	Throughout deployment and monitoring, I adjusted my docker-compose.yml to ensure proper service dependencies and network configurations. By iteratively addressing each issue with targeted adjustments and verifications, I successfully resolved the challenges and progressed with my Nextcloud deployment and load testing.
+
 
